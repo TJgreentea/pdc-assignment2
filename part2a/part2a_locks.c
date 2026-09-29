@@ -132,9 +132,13 @@ int main(int argc, char* argv[]) {
    finish = omp_get_wtime();
    printf("Elapsed time = %e seconds\n", finish-start);
 
-   free(curr);
-   free(forces);
-   return 0;
+  for (part = 0; part < n; part++)
+   omp_destroy_lock(&locks[part]);
+
+free(locks);
+free(curr);
+free(forces);
+return 0;
 }  /* main */
 
 
@@ -337,10 +341,19 @@ void Compute_force(int part, vect_t forces[], struct particle_s curr[],
 #     endif
 
       /* Accumulate equal and opposite contributions into shared forces. */
+      omp_set_lock(&locks[part]);
+
       forces[part][X] += f_part_k[X];
-      forces[part][Y] += f_part_k[Y];
-      forces[k][X] -= f_part_k[X];
-      forces[k][Y] -= f_part_k[Y];
+forces[part][Y] += f_part_k[Y];
+
+omp_unset_lock(&locks[part]);
+
+omp_set_lock(&locks[k]);
+
+forces[k][X] -= f_part_k[X];
+forces[k][Y] -= f_part_k[Y];
+
+omp_unset_lock(&locks[k]);
    }
 }  /* Compute_force */
 
