@@ -125,6 +125,7 @@ int main(int argc, char* argv[]) {
          Update_part(part, forces, curr, n, delta_t);
 
 #     ifndef NO_OUTPUT
+#pragma omp single
       if (step % output_freq == 0)
          Output_state(t, curr, n);
 #     endif

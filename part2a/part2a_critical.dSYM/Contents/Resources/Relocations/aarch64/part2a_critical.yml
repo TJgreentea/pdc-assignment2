@@ -2,16 +2,16 @@
 triple:          'arm64-apple-darwin'
 binary-path:     part2a_critical
 relocations:
-  - { offset: 0x19, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100006A98, symSize: 0x164 }
-  - { offset: 0xA8, size: 0x8, addend: 0x0, symName: _G, symObjAddr: 0xF38, symBinAddr: 0x100007BE0, symSize: 0x0 }
-  - { offset: 0x10B, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100006A98, symSize: 0x164 }
-  - { offset: 0x142, size: 0x8, addend: 0x0, symName: _main._omp_fn.0, symObjAddr: 0xD04, symBinAddr: 0x10000779C, symSize: 0x234 }
-  - { offset: 0x365, size: 0x8, addend: 0x0, symName: _Update_part, symObjAddr: 0xAF0, symBinAddr: 0x100007588, symSize: 0x214 }
-  - { offset: 0x3E1, size: 0x8, addend: 0x0, symName: _Compute_force, symObjAddr: 0x864, symBinAddr: 0x1000072FC, symSize: 0x28C }
-  - { offset: 0x4A1, size: 0x8, addend: 0x0, symName: _Reset_forces, symObjAddr: 0x7F8, symBinAddr: 0x100007290, symSize: 0x6C }
-  - { offset: 0x4ED, size: 0x8, addend: 0x0, symName: _Output_state, symObjAddr: 0x6B8, symBinAddr: 0x100007150, symSize: 0x140 }
-  - { offset: 0x548, size: 0x8, addend: 0x0, symName: _Gen_init_cond, symObjAddr: 0x530, symBinAddr: 0x100006FC8, symSize: 0x188 }
-  - { offset: 0x5BD, size: 0x8, addend: 0x0, symName: _Get_init_cond, symObjAddr: 0x3C0, symBinAddr: 0x100006E58, symSize: 0x170 }
-  - { offset: 0x605, size: 0x8, addend: 0x0, symName: _Get_args, symObjAddr: 0x230, symBinAddr: 0x100006CC8, symSize: 0x190 }
-  - { offset: 0x698, size: 0x8, addend: 0x0, symName: _Usage, symObjAddr: 0x164, symBinAddr: 0x100006BFC, symSize: 0xCC }
+  - { offset: 0x19, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100006A88, symSize: 0x164 }
+  - { offset: 0xA8, size: 0x8, addend: 0x0, symName: _G, symObjAddr: 0xF48, symBinAddr: 0x100007BE0, symSize: 0x0 }
+  - { offset: 0x10B, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100006A88, symSize: 0x164 }
+  - { offset: 0x142, size: 0x8, addend: 0x0, symName: _main._omp_fn.0, symObjAddr: 0xD04, symBinAddr: 0x10000778C, symSize: 0x244 }
+  - { offset: 0x365, size: 0x8, addend: 0x0, symName: _Update_part, symObjAddr: 0xAF0, symBinAddr: 0x100007578, symSize: 0x214 }
+  - { offset: 0x3E1, size: 0x8, addend: 0x0, symName: _Compute_force, symObjAddr: 0x864, symBinAddr: 0x1000072EC, symSize: 0x28C }
+  - { offset: 0x4A1, size: 0x8, addend: 0x0, symName: _Reset_forces, symObjAddr: 0x7F8, symBinAddr: 0x100007280, symSize: 0x6C }
+  - { offset: 0x4ED, size: 0x8, addend: 0x0, symName: _Output_state, symObjAddr: 0x6B8, symBinAddr: 0x100007140, symSize: 0x140 }
+  - { offset: 0x548, size: 0x8, addend: 0x0, symName: _Gen_init_cond, symObjAddr: 0x530, symBinAddr: 0x100006FB8, symSize: 0x188 }
+  - { offset: 0x5BD, size: 0x8, addend: 0x0, symName: _Get_init_cond, symObjAddr: 0x3C0, symBinAddr: 0x100006E48, symSize: 0x170 }
+  - { offset: 0x605, size: 0x8, addend: 0x0, symName: _Get_args, symObjAddr: 0x230, symBinAddr: 0x100006CB8, symSize: 0x190 }
+  - { offset: 0x698, size: 0x8, addend: 0x0, symName: _Usage, symObjAddr: 0x164, symBinAddr: 0x100006BEC, symSize: 0xCC }
 ...
