@@ -71,7 +71,7 @@ void Gen_init_cond(struct particle_s curr[], int n);
 void Output_state(double time, struct particle_s curr[], int n);
 void Reset_forces(vect_t forces[], int n);
 void Compute_force(int part, vect_t forces[], struct particle_s curr[],
-      int n);
+      int n, omp_lock_t locks[]);
 void Update_part(int part, vect_t forces[], struct particle_s curr[],
       int n, double delta_t);
 
@@ -87,7 +87,8 @@ int main(int argc, char* argv[]) {
    double t;                   /* Current Time               */
 #  endif
    struct particle_s* curr;    /* Current state of system    */
-   vect_t* forces;             /* Forces on each particle    */
+   vect_t* forces;  
+   omp_lock_t* locks;           /* Forces on each particle    */
    int thread_count;           /* Number of threads          */
    char g_i;                   /* _G_en or _i_nput init conds */
    double start, finish;       /* For timings                */
@@ -96,6 +97,9 @@ int main(int argc, char* argv[]) {
          &output_freq, &g_i);
    curr = malloc(n*sizeof(struct particle_s));
    forces = malloc(n*sizeof(vect_t));
+   locks = malloc(n*sizeof(omp_lock_t));
+   for (part = 0; part < n; part++)
+      omp_init_lock(&locks[part]);
    if (g_i == 'i')
       Get_init_cond(curr, n);
    else
@@ -114,7 +118,7 @@ int main(int argc, char* argv[]) {
 
       /* Particle n-1 has all its forces after Compute_force(n-2, ...). */
       for (part = 0; part < n-1; part++)
-         Compute_force(part, forces, curr, n);
+         Compute_force(part, forces, curr, n, locks);
 
       for (part = 0; part < n; part++)
          Update_part(part, forces, curr, n, delta_t);
@@ -307,7 +311,7 @@ void Reset_forces(vect_t forces[], int n) {
  *    -G m_part m_k (s_part - s_k)/|s_part - s_k|^3
  */
 void Compute_force(int part, vect_t forces[], struct particle_s curr[],
-      int n) {
+      int n, omp_lock_t locks[]) {
    int k;
    double mg;
    vect_t f_part_k;
