@@ -40,3 +40,43 @@ Method:
 Result:
   All tested thread counts matched the sequential reference.
 
+Locks Implementation
+====================
+
+Test 1 - Small generated case
+
+Parameters:
+  particles: 4
+  timesteps: 2
+  delta_t: 0.01
+  output frequency: 1
+  initial conditions: generated
+  thread counts: 1, 2, 4, 8
+
+Method:
+  Particle-state output from part2a_locks was compared
+  against nbody_shared_forces using diff. The elapsed-time
+  line was excluded from the comparison.
+
+Result:
+  All tested thread counts matched the sequential reference.
+
+
+Test 2 - Larger generated case
+
+Parameters:
+  particles: 8
+  timesteps: 5
+  delta_t: 0.01
+  output frequency: 5
+  initial conditions: generated
+  thread counts: 1, 2, 4, 8
+
+Method:
+  Particle-state output from part2a_locks was compared
+  against nbody_shared_forces using diff. The elapsed-time
+  line was excluded from the comparison.
+
+Result:
+  All tested thread counts matched the sequential reference.
+
